@@ -1,9 +1,8 @@
+var developer = new Developer(fname,lname,title,hRate,experience,skillsRequire);
+
 function Jobs{
-<<<<<<< HEAD
-  this.jposts=[];
-=======
   this.jposts = [];
->>>>>>> 7d32f2e78a09a8c55015e606a0bc2e5c12f8391a
+  this.jposts = [];
 }
 
 Jobs.prototype.addJob=function(job){
@@ -13,20 +12,15 @@ Jobs.prototype.addJob=function(job){
 
 Jobs.prototype.removeJob=function(job){
   this.jposts.pop(job);
-
 }
 
 
 function JobPosting {
-  this.companyName;
-  this.title;
-  this.difficulty;
-  this.description;
-  this.skillsRequire=[];
-}
-
-function Developers{
-  this.developers=[];
+  this.companyName = companyName;
+  this.title = title;
+  this.difficulty = difficulty;
+  this.description = description;
+  this.skillsRequire = [];
 }
 
 Developers.prototype.addDeveloper=function(developer){
@@ -40,27 +34,17 @@ Developers.prototype.removeDeveloper=function(developer){
 }
 
 function Developer(fname,lname,title,hRate,experience,skillsRequire){
-
-  this.fname=fname;
-  this.lname=lname;
-  this.title=title;
-  this.hourluRate=hRate;
-  this.experience=experience;
-  this.skills=skillsRequire;
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-=======
+  this.fname = fname;
+  this.lname = lname;
+  this.title = title;
+  this.hourluRate = hRate;
+  this.experience = experience;
+  this.skills = skillsRequire;
 }
+
 var newdevloper;
->>>>>>> e4d80dd87a5b766bba7a61a7b3746cd25c7a6ce8
+
+
 $(document).ready(function(){
 
   // company click function to take form inputs
@@ -71,27 +55,18 @@ $(document).ready(function(){
  ///developer click function to take form inputs
  $("#app-btn").click(function(){
     var fname,lname,email,title,skills=[],hourlyRate,xperience;
-       fname=$("input#app-first-name").val();
-       lname=$("input#app-last-name").val();
-       title=$("input#app-title").val();
-       hourlyRate=parseInt($("input#app-rate").val());
-       experience= $("input#app-exp").val();
-       $("input:checkbox[name=skills]:checked").each(function(){
-                    var skill = $(this).val();
-                    skills.push(skill);
-                  });
+    var fname = $("input#app-first-name").val();
+    var lname = $("input#app-last-name").val();
+    var title = $("input#app-title").val();
+    var hourlyRate = parseInt($("input#app-rate").val());
+    var experience = $("input#app-exp").val();
 
-   newdevloper=new Developer(fname,lname,title,hourlyRate,experience,skills);
-   
- });
+    $("input:checkbox[name=skills]:checked").each(function(){
+    var skill = $(this).val();
+    skills.push(skill);
+  });
+});
 
-$
-
-
-
-
-
-=======
 
   $("#submit").click(function(){
 
@@ -104,11 +79,12 @@ $
     var jobDescription = $("#description").val();
     var jobCondition = $("#condition").val();
 
-    var skills =[];
+    var skills = [];
+
     $("input:checkbox[name=skills]:checked").each(function(){
      var skillsRequired = $(this).val();
-     $("#bg-skills").text("<li>"+skillsRequired+"</li>");
 
+     $("#bg-skills").text("<li>"+skillsRequired+"</li>");
 
      skills.push(skillsRequired);
      // $('#responses').append( skillsRequired  + "<br>");
@@ -125,20 +101,5 @@ $
        $("#bg-condition").text(jobCondition);
 
      }
-
-
   });
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> b3bfe55d4e16e70b5160e9c188583575886addd5
->>>>>>> 7d32f2e78a09a8c55015e606a0bc2e5c12f8391a
->>>>>>> e4d80dd87a5b766bba7a61a7b3746cd25c7a6ce8
 });
