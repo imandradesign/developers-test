@@ -1,105 +1,80 @@
-var developer = new Developer(fname,lname,title,hRate,experience,skillsRequire);
+var newPost = new JobPosting();
 
-function Jobs{
-  this.jposts = [];
-  this.jposts = [];
-}
-
-Jobs.prototype.addJob=function(job){
-  this.jposts.push(job);
-
-}
-
-Jobs.prototype.removeJob=function(job){
-  this.jposts.pop(job);
-}
-
-
-function JobPosting {
+function JobPosting(companyName, title, difficulty, description) {
   this.companyName = companyName;
   this.title = title;
   this.difficulty = difficulty;
   this.description = description;
-  this.skillsRequire = [];
+  this.skills = [];
 }
 
-Developers.prototype.addDeveloper=function(developer){
-  this.developers.push(developer);
-
+JobPosting.prototype.entryPost = function(){
+  return '<div class="alert alert-success">' +
+    '<h5 class="alert-heading"><strong><span id="bg-title"></span></strong></h5>' +
+    '<p>Company name: <span id="bg-comp-name"></span></p>' +
+    '<p>Location: <span id="bg-location"></span></p>' +
+    '<ul>' +
+    '<span id="bg-skills"></span>' +
+    '</ul>' +
+    '<p>Description: <span id="bg-post-desc"></span></p>' +
+    '</div>'
 }
 
-Developers.prototype.removeDeveloper=function(developer){
-  this.developers.pop(developer);
-
+JobPosting.prototype.intPost = function(){
+  return '<div class="alert alert-success">' +
+    '<h5 class="alert-heading"><strong><span id="bg-title"></span></strong></h5>' +
+    '<p>Company name: <span id="bg-comp-name"></span></p>' +
+    '<p>Location: <span id="bg-location"></span></p>' +
+    '<ul>' +
+    '<span id="bg-skills"></span>' +
+    '</ul>' +
+    '<p>Description: <span id="bg-post-desc"></span></p>' +
+    '</div>'
 }
 
-function Developer(fname,lname,title,hRate,experience,skillsRequire){
-  this.fname = fname;
-  this.lname = lname;
-  this.title = title;
-  this.hourluRate = hRate;
-  this.experience = experience;
-  this.skills = skillsRequire;
+JobPosting.prototype.advPost = function(){
+  return '<div class="alert alert-success">' +
+    '<h5 class="alert-heading"><strong><span id="bg-title"></span></strong></h5>' +
+    '<p>Company name: <span id="bg-comp-name"></span></p>' +
+    '<p>Location: <span id="bg-location"></span></p>' +
+    '<ul>' +
+    '<span id="bg-skills"></span>' +
+    '</ul>' +
+    '<p>Description: <span id="bg-post-desc"></span></p>' +
+    '</div>'
 }
 
-var newdevloper;
 
 
 $(document).ready(function(){
 
-  // company click function to take form inputs
- $("#apply").click(function(){
 
- });
+ $("#post-btn").submit(function(event){
+   event.preventDefault();
 
- ///developer click function to take form inputs
- $("#app-btn").click(function(){
-    var fname,lname,email,title,skills=[],hourlyRate,xperience;
-    var fname = $("input#app-first-name").val();
-    var lname = $("input#app-last-name").val();
-    var title = $("input#app-title").val();
-    var hourlyRate = parseInt($("input#app-rate").val());
-    var experience = $("input#app-exp").val();
-
-    $("input:checkbox[name=skills]:checked").each(function(){
-    var skill = $(this).val();
-    skills.push(skill);
-  });
-});
-
-
-  $("#submit").click(function(){
-
-    var comName = $("#com-name").val();
+    var companyName = $("#com-name").val();
     var jobTitle = $("#job-title").val();
-    var comEmail= $("#com-email").val();
     var difficulty = $("#difficulty").val();
-    var joblocation = $("#location").val();
-    var jobCondition = $("#condition").val();
+    var jobLocation = $("#location").val();
     var jobDescription = $("#description").val();
-    var jobCondition = $("#condition").val();
-
-    var skills = [];
-
-    $("input:checkbox[name=skills]:checked").each(function(){
-     var skillsRequired = $(this).val();
-
-     $("#bg-skills").text("<li>"+skillsRequired+"</li>");
-
-     skills.push(skillsRequired);
-     // $('#responses').append( skillsRequired  + "<br>");
+    var jobSkills = $("input:checkbox[name=skills]:checked").map(function(){
+      JobPosting.skills.push($(this).val());
+      return JobPosting.skills;
     });
-     var moreSkills =  $("#skills").val();
-     // skills.push(moreSkills);
+    newPost
 
-     if (difficulty === "easy"){
-       $("#bg-comp-name").text(comName);
-       $("#bg-title").text(jobTitle);
-       $("#bg-location").text(joblocation);
-       $("#bg-add-skills").text(moreSkills);
-       $("#bg-post-desc").text(jobDescription);
-       $("#bg-condition").text(jobCondition);
-
-     }
+   if (difficulty === "entry"){
+     $("#entry-level").append(newPost.entryPost());
+     $("#bg-comp-name").text(companyName);
+     $("#bg-title").text(jobTitle);
+     $("#bg-location").text(jobLocation);
+     $("#bg-skills").text(jobSkills);
+     $("#bg-post-desc").text(jobDescription);
+     jobSkills.each(function(){
+       $("#bg-skills").text("<li>" + JobPosting.skills + "</li>");
+     })
+   } else {
+     console.log("Nope!")
+   }
   });
 });
