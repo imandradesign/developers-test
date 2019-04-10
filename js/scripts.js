@@ -1,56 +1,85 @@
-var newPost = new JobPosting();
 
-function JobPosting(companyName, title, difficulty, description) {
+
+function JobPosting(companyName, title, difficulty, location, description) {
   this.companyName = companyName;
   this.title = title;
   this.difficulty = difficulty;
+  this.location = location;
   this.description = description;
   this.skills = [];
 }
 
 JobPosting.prototype.entryPost = function(){
   return '<div class="alert alert-success">' +
-    '<h5 class="alert-heading"><strong><span id="bg-title"></span></strong></h5>' +
-    '<p>Company name: <span id="bg-comp-name"></span></p>' +
-    '<p>Location: <span id="bg-location"></span></p>' +
+    '<h5 class="alert-heading"><strong>' +
+    this.title +
+    '</strong></h5>' +
+    '<p>Company name: ' +
+    this.companyName +
+    '</p>' +
+    '<p>Location: ' +
+    this.location +
+    '</p>' +
     '<ul>' +
     '<span id="bg-skills"></span>' +
     '</ul>' +
-    '<p>Description: <span id="bg-post-desc"></span></p>' +
+    '<p>Description: ' +
+    this.description +
+    '</p>' +
     '</div>'
 }
 
 JobPosting.prototype.intPost = function(){
-  return '<div class="alert alert-success">' +
-    '<h5 class="alert-heading"><strong><span id="bg-title"></span></strong></h5>' +
-    '<p>Company name: <span id="bg-comp-name"></span></p>' +
-    '<p>Location: <span id="bg-location"></span></p>' +
+  return '<div class="alert alert-info">' +
+    '<h5 class="alert-heading"><strong>' +
+    this.title +
+    '</strong></h5>' +
+    '<p>Company name: ' +
+    this.companyName +
+    '</p>' +
+    '<p>Location: ' +
+    this.location +
+    '</p>' +
     '<ul>' +
     '<span id="bg-skills"></span>' +
     '</ul>' +
-    '<p>Description: <span id="bg-post-desc"></span></p>' +
+    '<p>Description: ' +
+    this.description +
+    '</p>' +
     '</div>'
 }
 
 JobPosting.prototype.advPost = function(){
-  return '<div class="alert alert-success">' +
-    '<h5 class="alert-heading"><strong><span id="bg-title"></span></strong></h5>' +
-    '<p>Company name: <span id="bg-comp-name"></span></p>' +
-    '<p>Location: <span id="bg-location"></span></p>' +
+  return '<div class="alert alert-primary">' +
+    '<h5 class="alert-heading"><strong>' +
+    this.title +
+    '</strong></h5>' +
+    '<p>Company name: ' +
+    this.companyName +
+    '</p>' +
+    '<p>Location: ' +
+    this.location +
+    '</p>' +
     '<ul>' +
     '<span id="bg-skills"></span>' +
     '</ul>' +
-    '<p>Description: <span id="bg-post-desc"></span></p>' +
+    '<p>Description: ' +
+    this.description +
+    '</p>' +
     '</div>'
 }
 
 
 
 $(document).ready(function(){
+  $(".post-form").hide();
 
+  $("#posting-btn").click(function(event){
+    $(".post-form").show();
+  });
 
- $("#post-btn").submit(function(event){
-   event.preventDefault();
+  $("#post-btn").click(function(event){
+    event.preventDefault();
 
     var companyName = $("#com-name").val();
     var jobTitle = $("#job-title").val();
@@ -58,23 +87,26 @@ $(document).ready(function(){
     var jobLocation = $("#location").val();
     var jobDescription = $("#description").val();
     var jobSkills = $("input:checkbox[name=skills]:checked").map(function(){
-      JobPosting.skills.push($(this).val());
-      return JobPosting.skills;
+      newPost.skills.push($(this).val());
+      return newPost.skills;
     });
-    newPost
 
-   if (difficulty === "entry"){
-     $("#entry-level").append(newPost.entryPost());
-     $("#bg-comp-name").text(companyName);
-     $("#bg-title").text(jobTitle);
-     $("#bg-location").text(jobLocation);
-     $("#bg-skills").text(jobSkills);
-     $("#bg-post-desc").text(jobDescription);
-     jobSkills.each(function(){
-       $("#bg-skills").text("<li>" + JobPosting.skills + "</li>");
-     })
-   } else {
-     console.log("Nope!")
-   }
+    var newPost = new JobPosting(companyName, jobTitle, difficulty, jobLocation, jobDescription);
+    newPost.entryPost();
+
+    if (difficulty === "entry"){
+       $("#entry-level").append(newPost.entryPost());
+
+       jobSkills.each(function(){
+         $("#bg-skills").text("<li>" + this.skills + "</li>");
+       })
+     } else if (difficulty === "intermediate"){
+       $("#int-level").append(newPost.intPost());
+
+     } else if (difficulty === "advanced"){
+       $("#adv-level").append(newPost.advPost());
+
+    }
+    $(".post-form").hide();
   });
 });
