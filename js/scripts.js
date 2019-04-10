@@ -78,6 +78,11 @@ $(document).ready(function(){
     $(".post-form").show();
   });
 
+  $("#post-close").click(function(event){
+    $(".post-form").hide();
+    $("#jobpost-form")[0].reset();
+  });
+
   $("#post-btn").click(function(event){
     event.preventDefault();
 
@@ -108,5 +113,6 @@ $(document).ready(function(){
 
     }
     $(".post-form").hide();
+    $("#jobpost-form")[0].reset();
   });
 });

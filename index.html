@@ -17,7 +17,7 @@
 
       <div class="post-form">
         <h2>Post a new job</h2>
-        <form>
+        <form id="jobpost-form">
           <div class="form-group">
             <label class="labels" for="name">Company Name</label>
             <input id="com-name" class="form-control" type="text">
@@ -52,7 +52,14 @@
             <input type="checkbox" name="skills" value="react"> React<br>
           </div>
         </div>
-        <button type="button" id="post-btn" class="btn btn-dark">Post</button>
+        <div class="row">
+          <div class="col-sm-6">
+            <button type="button" id="post-btn" class="btn btn-dark">Post</button>
+          </div>
+          <div class="col-sm-6">
+            <button type="button" id="post-close" class="btn btn-light">Cancel</button>
+          </div>
+        </div>
       </form>
       </div>
 
@@ -80,7 +87,7 @@
             <h4>Advanced Level Jobs</h4>
           </div>
           <div id="adv-level">
-            
+
           </div>
         </div>
       </div>
