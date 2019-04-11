@@ -11,7 +11,7 @@ _This page has existing job postings displayed along with buttons to other pages
 ## Setup
 
 _This page doesn't require any setup, just click the link to the Github pages URL:
-https://imandradesign.github.io/developers/index_
+https://imandradesign.github.io/developers-test/index_
 
 ## Support and contact details
 
