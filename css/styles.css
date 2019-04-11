@@ -27,18 +27,20 @@
 
 #home-heading {
   text-align: center;
+  color: white;
 }
 
 #skills {
   height: 100px;
 }
 
-#description, #app-exp {
+#description {
     padding-bottom: 100px;
     padding-top: 20px;
 }
 
-#posting-btn, #apply {
+#posting-btn {
   padding: 15px;
   font-size: 22px;
+  margin-top: 60px;
 }

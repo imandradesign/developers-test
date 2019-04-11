@@ -10,72 +10,72 @@ function JobPosting(companyName, title, difficulty, location, description) {
 }
 
 JobPosting.prototype.entryPost = function(){
-  return '<div class="alert alert-success">' +
-    '<h5 class="alert-heading"><strong><center>' +
+  return `<div class="alert alert-success">` +
+    `<h5 class="alert-heading"><strong><center>` +
     this.title +
-    '</center></strong></h5>' +
-    '<p class="label">Company name: </p>' +
-    '<p>' +
+    ` POSITION</center></strong></h5>` +
+    `<p class="label">Company name: </p>` +
+    `<p>` +
     this.companyName +
-    '</p>' +
-    '<p class="label">Location: </p>' +
-    '<p>' +
+    `</p>` +
+    `<p class="label">Location: </p>` +
+    `<p>` +
     this.location +
-    '</p>' +
-    '<p class="label">Required Skills: </p>' +
-    '<p>' +
+    `</p>` +
+    `<p class="label">Required Skills: </p>` +
+    `<p>` +
     this.skills +
-    '</p>' +
-    '<p class="label">Description: </p>' +
-    '<p>' +
+    `</p>` +
+    `<p class="label">Description: </p>` +
+    `<p>` +
     this.description +
-    '</p></div>'
+    `</p></div>`
 }
 
 JobPosting.prototype.intPost = function(){
-  return '<div class="alert alert-info">' +
-  '<h5 class="alert-heading"><strong><center>' +
+  return `<div class="alert alert-info">` +
+  `<h5 class="alert-heading"><strong><center>` +
   this.title +
-  '</center></strong></h5>' +
-  '<p class="label">Company name: </p>' +
-  '<p>' +
+  ` POSITION</center></strong></h5>` +
+  `<p class="label">Company name: </p>` +
+  `<p>` +
   this.companyName +
-  '</p>' +
-  '<p class="label">Location: </p>' +
-  '<p>' +
+  `</p>` +
+  `<p class="label">Location: </p>` +
+  `<p>` +
   this.location +
-  '</p>' +
-  '<p class="label">Required Skills: </p>' +
-  '<p>' +
+  `</p>` +
+  `<p class="label">Required Skills: </p>` +
+  `<p>` +
   this.skills +
-  '</p>' +
-  '<p class="label">Description: </p>' +
-  '<p>' +
+  `</p>` +
+  `<p class="label">Description: </p>` +
+  `<p>` +
   this.description +
-  '</p></div>'
+  `</p></div>`
 }
 
 JobPosting.prototype.advPost = function(){
-  return '<div class="alert alert-primary">' +
-  '<h5 class="alert-heading"><strong><center>' +
+  return `<div class="alert alert-primary">` +
+  `<h5 class="alert-heading"><strong><center>` +
   this.title +
-  '</center></strong></h5>' +
-  '<p class="label">Company name: </p>' +
-  '<p>' +
+  ` POSITION</center></strong></h5>` +
+  `<p class="label">Company name: </p>` +
+  `<p>` +
   this.companyName +
-  '</p>' +
-  '<p class="label">Location: </p>' +
-  '<p>' +
+  `</p>` +
+  `<p class="label">Location: </p>` +
+  `<p>` +
   this.location +
-  '</p>' +
-  '<p class="label">Required Skills: </p>' +
-  '<p>' +
+  `</p>` +
+  `<p class="label">Required Skills: </p>` +
+  `<p>` +
   this.skills +
-  '</p>' +
-  '<p class="label">Description: </p>' +
-  '<p>' +
+  `</p>` +
+  `<p class="label">Description: </p>` +
+  `<p>` +
   this.description +
-  '</p></div>'
+  `</p></div>`
 }
 
 
@@ -93,7 +93,6 @@ $(document).ready(function(){
   });
 
   $("#jobpost-form").submit(function(event){
-    debugger;
     event.preventDefault();
 
     var companyName = $("#com-name").val();
