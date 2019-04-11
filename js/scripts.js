@@ -92,7 +92,8 @@ $(document).ready(function(){
     $("#jobpost-form")[0].reset();
   });
 
-  $("#post-btn").click(function(event){
+  $("#jobpost-form").submit(function(event){
+    debugger;
     event.preventDefault();
 
     var companyName = $("#com-name").val();
